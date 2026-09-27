@@ -1,7 +1,7 @@
 import { createClient } from '@supabase/supabase-js';
 
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || '';
-const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || '';
+const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || 'https://bpergdomaetuujllbtft.supabase.co';
+const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || 'sb_publishable_3uQ__rTHykS6lYOSmWCRvA_p-uSk0yy';
 
 // Client-safe instance — used from the browser to insert a wish.
 // RLS policies (see supabase.sql) restrict this key to INSERT only.
