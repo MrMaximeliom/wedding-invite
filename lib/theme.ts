@@ -1,4 +1,4 @@
-import { weddingConfig, THEME_WINDOW_DAYS } from './config';
+import { weddingConfig, THEME_WINDOW_DAYS,DEBUG_DAY } from './config';
 
 // A palette of romantic gradient themes. One is picked per day so the whole
 // site's mood subtly shifts every day during the 30 days before the wedding.
@@ -17,7 +17,9 @@ export const THEMES = [
 ];
 
 function daysUntil(dateStr: string): number {
-  const now = new Date();
+  const now = DEBUG_DAY || new Date();
+ // const temp = new Date('2026-10-14');
+  console.log(now)
   const target = new Date(dateStr);
   const diffMs = target.getTime() - now.getTime();
   return Math.ceil(diffMs / (1000 * 60 * 60 * 24));
@@ -35,6 +37,7 @@ export function getDayIndex(): { index: number; daysRemaining: number } {
   const clamped = Math.max(0, Math.min(THEME_WINDOW_DAYS, remaining));
   const progress = 1 - clamped / THEME_WINDOW_DAYS;
   const index = Math.min(THEME_WINDOW_DAYS - 1, Math.floor(progress * THEME_WINDOW_DAYS));
+  console.log('🎵 getDayIndex:', { index, daysRemaining: remaining });
   return { index, daysRemaining: remaining };
 }
 

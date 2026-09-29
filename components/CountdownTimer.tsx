@@ -1,11 +1,29 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { weddingConfig } from '@/lib/config';
+import { weddingConfig,DEBUG_DAY } from '@/lib/config';
 
+const DEBUG_START = DEBUG_DAY?  DEBUG_DAY.getTime() : new Date().getTime();
+const DEBUG_BOOT = Date.now();
+
+function getNow() {
+  return DEBUG_START ? DEBUG_START + (Date.now() - DEBUG_BOOT) : Date.now();
+}
 function getTimeLeft() {
-  const diff = new Date(weddingConfig.weddingDateTime).getTime() - Date.now();
+  // const diff = new Date(weddingConfig.weddingDateTime).getTime() - Date.now();
+  // const clamped = Math.max(0, diff);
+  // return {
+  //   days: Math.floor(clamped / (1000 * 60 * 60 * 24)),
+  //   hours: Math.floor((clamped / (1000 * 60 * 60)) % 24),
+  //   minutes: Math.floor((clamped / (1000 * 60)) % 60),
+  //   seconds: Math.floor((clamped / 1000) % 60),
+  //   done: diff <= 0,
+  // };
+
+  const now = getNow();
+  const diff = new Date(weddingConfig.weddingDateTime).getTime() - now;
   const clamped = Math.max(0, diff);
+
   return {
     days: Math.floor(clamped / (1000 * 60 * 60 * 24)),
     hours: Math.floor((clamped / (1000 * 60 * 60)) % 24),

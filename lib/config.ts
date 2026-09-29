@@ -30,7 +30,10 @@ export const weddingConfig = {
   musicTracks: (process.env.NEXT_PUBLIC_MUSIC_TRACKS
     ? process.env.NEXT_PUBLIC_MUSIC_TRACKS.split(',').map((s) => s.trim())
     : Array.from({ length: 30 }, (_, i) => `/audio/${String(i + 1)}.mp3`)),
+
 };
 
 // Number of days before the wedding that the countdown/background theme/song starts rotating
 export const THEME_WINDOW_DAYS = 30;
+
+export const DEBUG_DAY = new Date('2026-10-01'); // for testing, pretend today is 30 days before the wedding

@@ -21,6 +21,7 @@ export default function MusicProvider({ children }: { children: React.ReactNode 
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const startedRef = useRef(false);
   const [song] = useState(() => getTodaySong());
+  console.log('🎵 MusicProvider song:', song);
   const [playing, setPlaying] = useState(false);
   const [blocked, setBlocked] = useState(false);
 
