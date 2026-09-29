@@ -4,6 +4,7 @@ import { weddingConfig, THEME_WINDOW_DAYS,DEBUG_DAY } from './config';
 // site's mood subtly shifts every day during the 30 days before the wedding.
 // (No external images needed — pure CSS gradients, so nothing to license or upload.)
 export const THEMES = [
+  // --- Original 10 ---
   { name: 'Blush Dawn', from: '#ffe4ec', via: '#ffd1dc', to: '#f7c8d0', accent: '#b3365b' },
   { name: 'Rose Gold', from: '#fbe3d4', via: '#f6cbb0', to: '#eab08c', accent: '#8a4b2f' },
   { name: 'Lavender Mist', from: '#ece3fb', via: '#dcd0f7', to: '#c9b8ec', accent: '#5b3a8a' },
@@ -14,6 +15,28 @@ export const THEMES = [
   { name: 'Pearl Blue', from: '#e3f1fb', via: '#cfe6f7', to: '#b3d6f0', accent: '#1f4f7a' },
   { name: 'Peony Pink', from: '#fde2ee', via: '#fbc6de', to: '#f6a3c7', accent: '#7a1f4f' },
   { name: 'Golden Hour', from: '#fff3d6', via: '#ffe1a3', to: '#ffca6b', accent: '#7a5a1f' },
+
+  // --- New 20 ---
+  { name: 'Sage Whisper', from: '#eef3e6', via: '#dfe8d1', to: '#c8d7b3', accent: '#4a5d2e' },
+  { name: 'Dusty Rose', from: '#f6e1e1', via: '#eccaca', to: '#dcaeae', accent: '#7d3b3b' },
+  { name: 'Ocean Breeze', from: '#dff4f5', via: '#c5e9eb', to: '#a3d9dd', accent: '#1d5a61' },
+  { name: 'Lilac Dream', from: '#f3e5f7', via: '#e6cdee', to: '#d3aee0', accent: '#6b2f80' },
+  { name: 'Apricot Glow', from: '#ffeadb', via: '#ffd7bb', to: '#ffbe94', accent: '#8a4a1a' },
+  { name: 'Mint Cream', from: '#e6f8f0', via: '#cfF0e0', to: '#b0e4cb', accent: '#1f6b4d' },
+  { name: 'Royal Plum', from: '#3a1d3f', via: '#502759', to: '#6d3479', accent: '#f4d3ee' },
+  { name: 'Coral Kiss', from: '#ffe2de', via: '#ffc7c0', to: '#ff a79c'.replace(' ', ''), accent: '#8a2a20' },
+  { name: 'Moonlit Navy', from: '#1a2340', via: '#243157', to: '#33447a', accent: '#d9e2ff' },
+  { name: 'Vanilla Cream', from: '#fffaf0', via: '#faefd6', to: '#f0e0b8', accent: '#7d6420' },
+  { name: 'Cherry Blossom', from: '#fff0f5', via: '#fddbe7', to: '#fbc0d4', accent: '#a12a5a' },
+  { name: 'Emerald Night', from: '#12332b', via: '#1b4a3e', to: '#266253', accent: '#c9f2e0' },
+  { name: 'Honey Amber', from: '#fff0cc', via: '#ffdf99', to: '#f5c264', accent: '#6d4a0f' },
+  { name: 'Powder Sky', from: '#eaf4ff', via: '#d5e8fc', to: '#bad6f7', accent: '#274f80' },
+  { name: 'Mauve Twilight', from: '#efe0ea', via: '#deC4d6', to: '#c9a3bf', accent: '#65305a' },
+  { name: 'Peach Sorbet', from: '#ffece0', via: '#ffd9c2', to: '#ffc1a0', accent: '#8f3f22' },
+  { name: 'Silver Mist', from: '#f1f3f6', via: '#e0e4ea', to: '#c9d0da', accent: '#3d4757' },
+  { name: 'Burgundy Velvet', from: '#3d1420', via: '#571d2d', to: '#742a3f', accent: '#f7d2da' },
+  { name: 'Wisteria', from: '#e9e6fa', via: '#d6d1f3', to: '#bdb5e8', accent: '#48408a' },
+  { name: 'Starlit Gold', from: '#2a2412', via: '#3e351a', to: '#574a25', accent: '#f6e2a0' },
 ];
 
 function daysUntil(dateStr: string): number {
@@ -46,6 +69,7 @@ export function getDayIndex(): { index: number; daysRemaining: number } {
 export function getTodayTheme() {
   const { index, daysRemaining } = getDayIndex();
   const themeIndex = Math.min(THEMES.length - 1, Math.floor((index / THEME_WINDOW_DAYS) * THEMES.length));
+  console.log('🎨 getTodayTheme:', { themeIndex, daysRemaining, theme: THEMES[themeIndex] });
   return { theme: THEMES[themeIndex], daysRemaining };
 }
 

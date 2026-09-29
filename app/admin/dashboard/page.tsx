@@ -3,9 +3,11 @@
 import { useEffect, useRef, useState, useCallback } from 'react';
 import { useRouter } from 'next/navigation';
 import jsPDF from 'jspdf';
-import html2canvas from 'html2canvas';
+import html2canvas from 'html2canvas-pro';
 import WishCard from '@/components/WishCard';
-import type { Wish } from '@/lib/supabase';
+//import type { Wish } from '@/lib/supabase';
+import { Wish } from "@/types/Wish";
+import { AdminWishes } from '@/components/AdminWishes';
 
 export default function AdminDashboard() {
   const router = useRouter();
@@ -42,7 +44,8 @@ export default function AdminDashboard() {
     const img = canvas.toDataURL('image/png');
     const pdf = new jsPDF({ orientation: 'landscape', unit: 'px', format: [canvas.width, canvas.height] });
     pdf.addImage(img, 'PNG', 0, 0, canvas.width, canvas.height);
-    pdf.save(`wish-${wish.name.replace(/\s+/g, '-').toLowerCase()}.pdf`);
+    pdf.save(`wish.pdf`);
+   // pdf.save(`wish-${wish.name.replace(/\s+/g, '-').toLowerCase()}.pdf`);
   };
 
   const exportAllAsPdf = async () => {
@@ -89,20 +92,9 @@ export default function AdminDashboard() {
         ) : wishes.length === 0 ? (
           <p className="text-neutral-500">No wishes received yet.</p>
         ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            {wishes.map((wish) => (
-              <div key={wish.id} className="flex flex-col items-center gap-3">
-                <div ref={(el) => { cardRefs.current[wish.id] = el; }}>
-                  <WishCard wish={wish} />
-                </div>
-                <button
-                  onClick={() => exportCardAsPdf(wish)}
-                  className="text-sm px-4 py-1.5 rounded-full border border-neutral-400 text-neutral-700 hover:bg-neutral-200"
-                >
-                  Save as Card (PDF)
-                </button>
-              </div>
-            ))}
+          <div className="gap-8">
+            <AdminWishes wishes={wishes} />
+            
           </div>
         )}
       </div>

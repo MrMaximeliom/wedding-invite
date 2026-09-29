@@ -1,6 +1,6 @@
 import { weddingConfig } from '@/lib/config';
-import type { Wish } from '@/lib/supabase';
-
+// import type { Wish } from '@/lib/supabase';
+import { Wish } from '@/types/Wish';
 export default function WishCard({ wish }: { wish: Wish }) {
   const date = new Date(wish.created_at).toLocaleDateString(undefined, {
     year: 'numeric',

@@ -15,9 +15,3 @@ export const supabaseAdmin = createClient(supabaseUrl, serviceRoleKey || supabas
   auth: { persistSession: false },
 });
 
-export type Wish = {
-  id: string;
-  name: string;
-  message: string;
-  created_at: string;
-};
