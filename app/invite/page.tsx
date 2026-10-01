@@ -1,8 +1,17 @@
+"use client";
 import Link from 'next/link';
 import AnimatedBackground from '@/components/AnimatedBackground';
-import { weddingConfig } from '@/lib/config';
+import { weddingConfig,weddingCountdownPhrases } from '@/lib/config';
+import { getDayIndex } from '@/lib/theme';
+import { useLocale } from '@/hooks/useLocale';
 
 export default function InvitePage() {
+  const currentPhrase = weddingCountdownPhrases.find(
+  (item) => item.day === getDayIndex().index
+);
+  const locale = useLocale();
+  const isArabicLocale = locale === "ar";
+
   return (
     <AnimatedBackground>
       <main className="flex-1 flex flex-col items-center justify-center min-h-screen px-6 py-10 text-center">
@@ -13,7 +22,9 @@ export default function InvitePage() {
           <p className="text-base sm:text-lg leading-relaxed text-[var(--accent,#b3365b)]/90">
             {weddingConfig.inviteMessage}
           </p>
+
         </div>
+        
 
         <Link
           href="/details"

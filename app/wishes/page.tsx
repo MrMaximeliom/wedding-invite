@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import AnimatedBackground from '@/components/AnimatedBackground';
 import CountdownTimer from '@/components/CountdownTimer';
+import DayPhrase from '@/components/DayPhrase';
 
 export default function WishesPage() {
   const [name, setName] = useState('');
@@ -32,7 +33,7 @@ export default function WishesPage() {
     <AnimatedBackground>
       <main className="flex-1 flex flex-col items-center justify-between min-h-screen px-6 py-10 text-center">
         <p className="font-script text-4xl text-[var(--accent,#b3365b)] pt-4">Leave Your Wishes</p>
-
+       
         <div className="w-full max-w-sm">
           {status === 'sent' ? (
             <p className="text-lg text-[var(--accent,#b3365b)]">
@@ -71,7 +72,7 @@ export default function WishesPage() {
             </form>
           )}
         </div>
-
+ <DayPhrase />
         <div className="pb-4">
           <p className="uppercase tracking-widest text-xs text-[var(--accent,#b3365b)]/60 mb-3">
             Counting down to our big day
