@@ -31,5 +31,5 @@ export default async function middleware(req: NextRequest) {
 
 export const config = {
   // Run on everything except Next internals and files with an extension (images, etc.)
-  matcher: ['/((?!_next|.*\\..*).*)'],
+  matcher: ['/((?!api|trpc|_next|_vercel|.*\\..*).*)']
 };

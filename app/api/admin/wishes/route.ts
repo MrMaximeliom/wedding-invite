@@ -10,7 +10,7 @@ export async function GET(req: NextRequest) {
   }
 
   const { data, error } = await supabaseAdmin
-    .from('wishes')
+    .from('lovely')
     .select('*')
     .order('created_at', { ascending: false });
 

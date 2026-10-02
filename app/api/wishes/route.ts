@@ -11,7 +11,7 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: 'Name and wish are required.' }, { status: 400 });
     }
 
-    const { error } = await supabaseAdmin.from('wishes').insert({ name, message });
+    const { error } = await supabaseAdmin.from('lovely').insert({ name, message });
 
     if (error) {
       console.error(error);
