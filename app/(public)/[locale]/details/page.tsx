@@ -23,7 +23,7 @@ export default async function DetailsPage() {
   return (
     <AnimatedBackground>
       <main className="flex-1 flex flex-col items-center justify-center min-h-screen px-6 py-10 text-center gap-8">
-        <p className=" text-4xl text-[var(--accent,#b3365b)]">{t('title')}</p>
+        <p className={`text-4xl text-[var(--accent,#b3365b)] ${locale === 'ar' ? 'font-arabic' : 'font-script'}`}>{t('title')}</p>
 
         <div className="space-y-6 max-w-sm">
           <div>

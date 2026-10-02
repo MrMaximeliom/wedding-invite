@@ -1,16 +1,19 @@
 import { getTranslations } from 'next-intl/server';
 import { Link } from '@/i18n/navigation';
 import AnimatedBackground from '@/components/AnimatedBackground';
-
+import { headers, cookies } from 'next/headers';
 export default async function InvitePage() {
   const t = await getTranslations('Message');
  const invite = await getTranslations('Invite');
  const  names = await getTranslations('Names');
+   const cookieStore = await cookies();
+  const locale = cookieStore.get('NEXT_LOCALE')?.value || 'en';
+  console.log('locale is', locale);
   return (
     <AnimatedBackground>
       <main className="flex-1 flex flex-col items-center justify-center min-h-screen px-6 py-10 text-center">
         <div className="max-w-md">
-          <p className="  text-4xl sm:text-5xl text-[var(--accent,#b3365b)] mb-6">
+          <p className={`  ${locale === 'ar' ? 'font-arabic' : 'font-script'} text-4xl sm:text-5xl text-[var(--accent,#b3365b)] mb-6`}>
                {names('coupleNames')}
           </p>
           <p className=" text-base sm:text-lg leading-loose text-[var(--accent,#b3365b)]/90">

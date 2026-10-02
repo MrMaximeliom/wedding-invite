@@ -4,13 +4,13 @@ import { useTranslations } from 'next-intl';
 import { useRouter } from '@/i18n/navigation';
 import AnimatedBackground from '@/components/AnimatedBackground';
 import Stamp from '@/components/Stamp';
-import { weddingConfig } from '@/lib/config';
+import { useLocale } from 'next-intl';
 
 export default function LandingPage() {
   const router = useRouter();
   const t = useTranslations('Landing');
    const  names = useTranslations('Names');
-
+  const locale = useLocale();
 
   return (
     <AnimatedBackground>
@@ -19,7 +19,7 @@ export default function LandingPage() {
           {t('invited')}
         </p>
         <Stamp onClick={() => router.push('/invite')} />
-        <p className="mt-8  text-2xl sm:text-3xl text-[var(--accent,#b3365b)]">
+        <p className={`mt-8 ${locale === 'ar' ? 'font-arabic' : 'font-script'} text-2xl sm:text-3xl text-[var(--accent,#b3365b)]`}>
           {names('coupleNames')}
         </p>
       </main>

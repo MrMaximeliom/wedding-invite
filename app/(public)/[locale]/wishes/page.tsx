@@ -5,12 +5,14 @@ import { useTranslations } from 'next-intl';
 import AnimatedBackground from '@/components/AnimatedBackground';
 import CountdownTimer from '@/components/CountdownTimer';
 import DayPhrase from '@/components/DayPhrase';
+import { useLocale } from 'next-intl';
 
 export default function WishesPage() {
   const t = useTranslations('Wishes');
   const [name, setName] = useState('');
   const [message, setMessage] = useState('');
   const [status, setStatus] = useState<'idle' | 'sending' | 'sent' | 'error'>('idle');
+  const locale = useLocale();
 
   const submit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -34,7 +36,7 @@ export default function WishesPage() {
   return (
     <AnimatedBackground>
       <main className="flex-1 flex flex-col items-center justify-between min-h-screen px-6 py-10 text-center">
-        <p className=" text-4xl text-[var(--accent,#b3365b)] pt-4">{t('title')}</p>
+        <p className={`text-4xl text-[var(--accent,#b3365b)] pt-4 ${locale === 'ar' ? 'font-arabic' : 'font-script'}`}>{t('title')}</p>
 
         <div className="w-full max-w-sm">
           {status === 'sent' ? (
