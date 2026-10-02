@@ -1,9 +1,19 @@
 import type { Metadata } from 'next';
-import './globals.css';
+import '@/app/globals.css';
 import { weddingConfig, THEME_WINDOW_DAYS , DEBUG_DAY  } from '@/lib/config';
 import { THEMES } from '@/lib/theme';
 import MusicProvider from '@/components/MusicProvider';
-
+import { notFound } from 'next/navigation';
+import { NextIntlClientProvider, hasLocale } from 'next-intl';
+import { setRequestLocale } from 'next-intl/server';
+import '@/app/globals.css';
+import { routing } from '@/i18n/routing';
+import {
+  Amiri,
+  Aref_Ruqaa,
+  Cairo,
+  Tajawal,
+} from 'next/font/google';
 // Runs before first paint, so there is no flash. Mirrors getTodayTheme()
 // in lib/theme.ts exactly — keep these in sync if that logic ever changes.
 const themeScript = `
@@ -31,19 +41,71 @@ const themeScript = `
 })();
 `;
 
+const amiri = Amiri({
+  subsets: ['arabic'],
+  weight: ['400', '700'],
+  variable: '--font-amiri',
+});
+
+const arefRuqaa = Aref_Ruqaa({
+  subsets: ['arabic'],
+  weight: ['400'],
+  variable: '--font-aref-ruqaa',
+});
+
+const cairo = Cairo({
+  subsets: ['arabic'],
+  weight: ['400', '500', '600', '700'],
+  variable: '--font-cairo',
+});
+
+const tajawal = Tajawal({
+  subsets: ['arabic'],
+  weight: ['400', '500', '700'],
+  variable: '--font-tajawal',
+});
 export const metadata: Metadata = {
   title: `${weddingConfig.coupleNames} — Wedding Invitation`,
   description: weddingConfig.inviteMessage,
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export function generateStaticParams() {
+  return routing.locales.map((locale) => ({ locale }));
+}
+
+export default async function LocaleLayout({
+  children,
+  params,
+}: {
+  children: React.ReactNode;
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  if (!hasLocale(routing.locales, locale)) {
+    notFound();
+  }
+
+  // Enables static rendering for this locale.
+  setRequestLocale(locale);
+
+  const dir = locale === 'ar' ? 'rtl' : 'ltr';
+  const isArabic = locale === 'ar';
+
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang={locale} dir={dir} suppressHydrationWarning>
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
       </head>
-      <body className="min-h-full flex flex-col">
-        <MusicProvider>{children}</MusicProvider>
+      <body  className={`
+      min-h-full flex flex-col
+    ${amiri.variable}
+    ${arefRuqaa.variable}
+    ${cairo.variable}
+        ${isArabic ? 'font-arabic' : 'font-english'}
+  `} >
+        <NextIntlClientProvider>
+          <MusicProvider>{children}</MusicProvider>
+        </NextIntlClientProvider>
       </body>
     </html>
   );

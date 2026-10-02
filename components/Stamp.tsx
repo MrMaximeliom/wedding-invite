@@ -1,12 +1,15 @@
 'use client';
 
+import { useTranslations } from 'next-intl';
 import { weddingConfig } from '@/lib/config';
 
 export default function Stamp({ onClick }: { onClick: () => void }) {
+  const t = useTranslations('Landing');
+
   return (
     <button
       onClick={onClick}
-      aria-label="Open your invitation"
+      aria-label={t('openInvitation')}
       className="stamp stamp-pulse float w-56 h-64 sm:w-64 sm:h-72 flex flex-col items-center justify-center border-4 border-dashed border-[var(--accent,#b3365b)] rounded-sm cursor-pointer transition-transform hover:scale-105 active:scale-95"
     >
       <div className="flex items-end gap-2 text-[var(--accent,#b3365b)]">
@@ -23,7 +26,7 @@ export default function Stamp({ onClick }: { onClick: () => void }) {
         <span className="font-script text-6xl sm:text-7xl leading-none">{weddingConfig.initialB}</span>
       </div>
       <p className="mt-3 text-xs sm:text-sm tracking-[0.3em] uppercase text-[var(--accent,#b3365b)]/80">
-        Tap to open
+        {t('tapToOpen')}
       </p>
     </button>
   );

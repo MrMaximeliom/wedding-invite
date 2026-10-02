@@ -1,7 +1,8 @@
 'use client';
 
 import { createContext, useContext, useEffect, useRef, useState } from 'react';
-import { usePathname } from 'next/navigation';
+import { useTranslations } from 'next-intl';
+import { usePathname } from '@/i18n/navigation'; // locale-stripped pathname: "/en/invite" -> "/invite"
 import { getTodaySong } from '@/lib/theme';
 
 type MusicContextValue = { playing: boolean; toggle: () => void };
@@ -17,11 +18,11 @@ export function useMusic() {
 // playing as the visitor moves between /invite -> /details -> /wishes.
 // It starts once, the first time they leave the "/" stamp landing page.
 export default function MusicProvider({ children }: { children: React.ReactNode }) {
+  const t = useTranslations('Music');
   const pathname = usePathname();
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const startedRef = useRef(false);
   const [song] = useState(() => getTodaySong());
-  console.log('🎵 MusicProvider song:', song);
   const [playing, setPlaying] = useState(false);
   const [blocked, setBlocked] = useState(false);
 
@@ -86,7 +87,7 @@ export default function MusicProvider({ children }: { children: React.ReactNode 
           </button>
           {blocked && (
             <span className="text-[10px] uppercase tracking-wide text-[var(--accent,#b3365b)]/70 bg-white/70 px-2 py-0.5 rounded-full whitespace-nowrap">
-              Tap for sound
+              {t('tapForSound')}
             </span>
           )}
         </div>

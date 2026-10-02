@@ -14,10 +14,17 @@
 body {
   font-family: 'Cormorant Garamond', serif;
 }
+.font-english {
+  font-family: 'Cormorant Garamond', serif;
+}
 
 .font-script {
   font-family: 'Great Vibes', cursive;
 }
+.font-arabic {
+  font-family: var(--font-amiri), serif;
+}
+
 
 /* Slowly drifting gradient using the CSS vars set by AnimatedBackground */
 .bg-animated {

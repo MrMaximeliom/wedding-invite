@@ -1,0 +1,201 @@
+{
+  "Names": {
+    "coupleNames": "Moayed & Alaa"
+  },
+  "Landing": {
+    "invited": "You're invited",
+    "openInvitation": "Open your invitation",
+    "tapToOpen": "Tap to open"
+  },
+    "Message": {
+  "intro": "In the name of Allah, who brings hearts together and fills them with love and mercy,",
+
+  "invitation": "With hearts full of joy and gratitude, and together with our beloved families, we are honored to invite you to share in the happiness of a day we have long awaited — a day on which we begin a new chapter of our story, hoping that its pages will be filled with love, companionship, and lasting grace throughout the years to come.",
+
+  "presence": "Your presence on this cherished occasion would mean more to us than words can express. It would become a beautiful part of a memory we hope to carry with us as we begin this new journey together.",
+
+  "closing": "We would be delighted to have you with us as we celebrate this precious beginning and write the first lines of a story we pray will become the most beautiful chapter of our lives. 🤍"
+},
+  "Invite": {
+    "detailsButton": "Wedding Details"
+
+
+  },
+  "Details": {
+    "title": "Wedding Details",
+    "date": "Date",
+    "time": "Time",
+    "venue": "Venue",
+    "openMaps": "Open in Google Maps",
+    "wishesButton": "Send Your Wishes"
+  },
+  "Wishes": {
+    "title": "Leave Your Wishes",
+    "namePlaceholder": "Your name",
+    "messagePlaceholder": "Write your wish for the couple...",
+    "send": "Send Wish",
+    "sending": "Sending…",
+    "thankYou": "Thank you! Your wish has been received with love. 💌",
+    "error": "Something went wrong. Please try again.",
+    "countdownLabel": "Counting down to our big day"
+  },
+  "Countdown": {
+    "days": "Days",
+    "hours": "Hours",
+    "minutes": "Minutes",
+    "seconds": "Seconds",
+    "married": "We're married! 💍"
+  },
+  "Music": {
+    "tapForSound": "Tap for sound"
+  },
+  
+  "Phrases": {
+    "today": {
+      "title": "Today",
+      "phrase": "Today, we celebrate more than a single day… we celebrate everyone who brought us here, everyone sharing this moment with us, and everything we hope the days ahead will bring. 🤍"
+    },
+    "gratitude": {
+      "title": "Gratitude",
+      "phrase": "Before beginning a new chapter, we are grateful to everyone who was part of the chapters that brought us here."
+    },
+    "theMoment": {
+      "title": "The Moment",
+      "phrase": "Some moments need no long description… they simply need to be lived with all our hearts."
+    },
+    "presence": {
+      "title": "Presence",
+      "phrase": "Some people make a celebration more beautiful simply by being there… thank you to everyone who will be part of this memory."
+    },
+    "dreams": {
+      "title": "Dreams",
+      "phrase": "Shared dreams become more beautiful… because they turn from wishes into a life built day by day."
+    },
+
+    "blessing": {
+      "title": "Blessing",
+      "phrase": "May God bless this step and make what follows even better than what came before."
+    },
+
+    "oneWeek": {
+      "title": "One Week",
+      "phrase": "One week… and perhaps the most beautiful part is knowing that so many people are preparing to share our joy."
+    },
+
+    "theJourney": {
+      "title": "The Journey",
+      "phrase": "What matters is not having a road without difficulties… but knowing we do not have to walk it alone."
+    },
+
+    "love": {
+      "title": "Love",
+      "phrase": "True love does not need many words; it reveals itself through presence and care."
+    },
+
+    "tomorrow": {
+      "title": "Tomorrow",
+      "phrase": "We do not know what the days ahead may hold, but we can welcome them with grateful hearts and good wishes."
+    },
+
+    "comfort": {
+      "title": "Comfort",
+      "phrase": "Knowing there is someone you can truly be yourself with… is a beautiful kind of security."
+    },
+
+    "joy": {
+      "title": "Joy",
+      "phrase": "True joy becomes even more beautiful when there is someone to share it with."
+    },
+
+    "goodCompany": {
+      "title": "Good Company",
+      "phrase": "The best company is the kind that makes you more at peace with life and more grateful for it."
+    },
+
+    "memories": {
+      "title": "Memories",
+      "phrase": "Some moments pass quickly, yet stay with us for many years."
+    },
+
+    "aLifetime": {
+      "title": "A Lifetime",
+      "phrase": "The beauty of life is not in the number of years, but in the people who make those years worth living."
+    },
+
+    "differences": {
+      "title": "Differences",
+      "phrase": "We do not need to be alike in everything… it is enough to know how to differ and still remain close."
+    },
+
+    "affection": {
+      "title": "Affection",
+      "phrase": "Affection is not just a word; it is found in the little things we do every day without expecting anything in return."
+    },
+
+    "theFuture": {
+      "title": "The Future",
+      "phrase": "The future does not need to be perfect; it only needs to be filled with things worth experiencing together."
+    },
+
+    "thoseAroundUs": {
+      "title": "Those Around Us",
+      "phrase": "Some people do not simply appear in our pictures… their presence lives in every beautiful memory."
+    },
+
+    "gratitudeAt10": {
+      "title": "Gratitude",
+      "phrase": "Amidst everything we look forward to, there is already so much worth saying: Alhamdulillah."
+    },
+
+    "family": {
+      "title": "Family",
+      "phrase": "A day that brings two families together opens the door to a bigger family and more stories to share."
+    },
+
+    "togetherness": {
+      "title": "Togetherness",
+      "phrase": "Life becomes lighter when you have someone to share its joys and carry its burdens with you."
+    },
+
+    "serenity": {
+      "title": "Serenity",
+      "phrase": "Not everything beautiful arrives with noise; some things come quietly and become an irreplaceable part of our lives."
+    },
+
+    "laughter": {
+      "title": "Laughter",
+      "phrase": "Having someone in your life you can laugh with over the simplest things… is a priceless blessing."
+    },
+
+    "theLittleThings": {
+      "title": "The Little Things",
+      "phrase": "A beautiful life is not built only from grand moments, but from the little things that happen every day."
+    },
+
+    "prayers": {
+      "title": "Prayers",
+      "phrase": "Behind every great joy are countless wishes, some spoken aloud and others heard only by God."
+    },
+
+    "familyAt3": {
+      "title": "Family",
+      "phrase": "The beauty of celebrations is that they belong to more than two people; they bring many hearts together."
+    },
+
+    "home": {
+      "title": "Home",
+      "phrase": "Home is not walls and furniture… it is the place where we feel that we are never alone."
+    },
+
+    "companionship": {
+      "title": "Companionship",
+      "phrase": "Finding someone you feel at ease with along the way matters more than knowing where the road will lead."
+    },
+
+    "beginnings": {
+      "title": "Beginnings",
+      "phrase": "Every beautiful story begins with a step… and some steps change an entire life."
+    }
+  }
+
+}
