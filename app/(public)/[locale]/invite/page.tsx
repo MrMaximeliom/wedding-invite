@@ -1,7 +1,6 @@
 import { getTranslations } from 'next-intl/server';
 import { Link } from '@/i18n/navigation';
 import AnimatedBackground from '@/components/AnimatedBackground';
-import { weddingConfig } from '@/lib/config';
 
 export default async function InvitePage() {
   const t = await getTranslations('Message');
@@ -11,7 +10,7 @@ export default async function InvitePage() {
     <AnimatedBackground>
       <main className="flex-1 flex flex-col items-center justify-center min-h-screen px-6 py-10 text-center">
         <div className="max-w-md">
-          <p className=" font-script text-4xl sm:text-5xl text-[var(--accent,#b3365b)] mb-6">
+          <p className="  text-4xl sm:text-5xl text-[var(--accent,#b3365b)] mb-6">
                {names('coupleNames')}
           </p>
           <p className=" text-base sm:text-lg leading-loose text-[var(--accent,#b3365b)]/90">

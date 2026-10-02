@@ -9,6 +9,8 @@ import { weddingConfig } from '@/lib/config';
 export default function LandingPage() {
   const router = useRouter();
   const t = useTranslations('Landing');
+   const  names = useTranslations('Names');
+
 
   return (
     <AnimatedBackground>
@@ -17,8 +19,8 @@ export default function LandingPage() {
           {t('invited')}
         </p>
         <Stamp onClick={() => router.push('/invite')} />
-        <p className="mt-8 font-script text-2xl sm:text-3xl text-[var(--accent,#b3365b)]">
-          {weddingConfig.coupleNames}
+        <p className="mt-8  text-2xl sm:text-3xl text-[var(--accent,#b3365b)]">
+          {names('coupleNames')}
         </p>
       </main>
     </AnimatedBackground>
