@@ -80,5 +80,6 @@ export function getTodaySong(): { src: string; dayNumber: number } {
   const { index } = getDayIndex();
   const tracks = weddingConfig.musicTracks;
   const trackIndex = tracks.length > 0 ? Math.min(tracks.length - 1, index) : 0;
+  console.log('🎵 getTodaySong:', { trackIndex, dayNumber: index + 1, src: tracks[trackIndex] });
   return { src: tracks[trackIndex], dayNumber: index + 1 };
 }

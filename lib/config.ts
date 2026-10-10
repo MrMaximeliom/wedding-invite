@@ -9,7 +9,7 @@ export const weddingConfig = {
   coupleNames: process.env.NEXT_PUBLIC_COUPLE_NAMES || 'Moayed & Alaa',
 
   // ISO date-time string, e.g. "2026-12-12T18:00:00+04:00"
-  weddingDateTime: process.env.NEXT_PUBLIC_WEDDING_DATETIME || '2026-10-30T18:00:00+04:00',
+  weddingDateTime: process.env.NEXT_PUBLIC_WEDDING_DATETIME || '2026-10-30T13:00:00+04:00',
 
   venueName: process.env.NEXT_PUBLIC_VENUE_NAME || 'The Grand Ballroom',
   venueAddress: process.env.NEXT_PUBLIC_VENUE_ADDRESS || 'Abu Dhabi, United Arab Emirates',
