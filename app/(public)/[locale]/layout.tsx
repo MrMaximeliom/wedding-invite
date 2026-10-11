@@ -64,35 +64,78 @@ const tajawal = Tajawal({
   weight: ['400', '500', '700'],
   variable: '--font-tajawal',
 });
-export const metadata: Metadata = {
-  title: `${weddingConfig.coupleNames} — Wedding Invitation`,
-  description:
-    "Together with our families, we invite you to celebrate our wedding.",
-  openGraph: {
-    title: "We're Getting Married",
-    description:
-      "Together with our families, we invite you to celebrate our wedding.",
-    url: "https://wedding-invite-five-jade.vercel.app",
-    siteName: "Our Wedding Invitation",
-    type: "website",
-    images: [
-      {
-        url: '/images/share.png',
-        width: 1200,
-        height: 630,
-        alt: "Our wedding invitation",
-      },
-    ],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "We're Getting Married",
-    description: "Together with our families.",
-    images: ['/images/share.png'],
-  },
-  
-};
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const isArabic = locale === "ar";
 
+  const title = isArabic
+    ? `دعوة زفاف ${weddingConfig.coupleNames}`
+    : `${weddingConfig.coupleNames} — Wedding Invitation`;
+
+  const description = isArabic
+    ? "يسعدنا دعوتكم لمشاركتنا فرحة زفافنا."
+    : "Together with our families, we invite you to celebrate our wedding.";
+
+  const alt = isArabic ? "دعوة زفافنا" : "Our Wedding Invitation";
+
+  return {
+    title,
+    description,
+
+    alternates: {
+      canonical: `/${locale}`,
+      languages: { en: "/en", ar: "/ar" },
+    },
+
+    // Apple: stops Safari from turning dates/numbers into phone links
+    formatDetection: {
+      telephone: false,
+      date: false,
+      address: false,
+      email: false,
+    },
+
+    // Apple: home-screen icon + "Add to Home Screen" title
+    icons: {
+      apple: [{ url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" }],
+    },
+    appleWebApp: {
+      capable: true,
+      title: isArabic ? "دعوة الزفاف" : "Wedding Invitation",
+      statusBarStyle: "default",
+    },
+
+    // iMessage, WhatsApp, Facebook read Open Graph
+    openGraph: {
+      type: "website",
+      title,
+      description,
+      siteName: "Our Wedding Invitation",
+      url: `/${locale}`,
+      locale: isArabic ? "ar_AE" : "en_US",
+      images: [
+        {
+          url: "/images/share.jpg",
+          width: 1200,
+          height: 630,
+          alt,
+        },
+      ],
+    },
+
+    // Twitter/X keeps the original "Scan to view" image
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: ["/images/share.jpg"],
+    },
+  };
+}
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
 }
