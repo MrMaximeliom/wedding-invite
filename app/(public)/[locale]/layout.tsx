@@ -77,7 +77,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "/share.png",
+        url: '/images/share.png',
         width: 1200,
         height: 630,
         alt: "Our wedding invitation",
@@ -88,7 +88,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "We're Getting Married",
     description: "Together with our families.",
-    images: ["/share.png"],
+    images: ['/images/share.png'],
   },
   
 };

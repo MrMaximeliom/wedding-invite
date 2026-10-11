@@ -26,9 +26,9 @@ export default function Stamp({ onClick }: { onClick: () => void }) {
         <span className="font-script text-6xl sm:text-7xl leading-none">{weddingConfig.initialB}</span> */}
         <Image alt='' src="/images/stamp.svg" width={250} height={250} />
       </div>
-      <p className="mt-3 text-xs sm:text-sm tracking-[0.3em] uppercase text-[var(--accent,#b3365b)]/80">
+      <p className="mt-3 text-xs sm:text-sm tracking-[0.3em] uppercase text-[var(--accent,#b3365b)]/80 loading='eager'">
         {t('tapToOpen')}
       </p>
     </button>
-  );
+  ); 
 }
