@@ -26,6 +26,8 @@
     "date": "Date",
     "time": "Time",
     "venue": "Venue",
+    "name": "Abu Altayib Hall",
+    "address": "Om Durman, Sudan",
     "openMaps": "Open in Google Maps",
     "wishesButton": "Send Your Wishes"
   },

@@ -36,12 +36,12 @@ export default async function DetailsPage() {
           </div>
           <div>
             <p className="uppercase tracking-widest text-xs text-[var(--accent,#b3365b)]/60">{t('venue')}</p>
-            <p className="text-lg sm:text-xl text-[var(--accent,#b3365b)]">{weddingConfig.venueName}</p>
-            <p className="text-sm text-[var(--accent,#b3365b)]/80">{weddingConfig.venueAddress}</p>
+            <p className="text-lg sm:text-xl text-[var(--accent,#b3365b)]">{t('name')}</p>
+            <p className="text-sm text-[var(--accent,#b3365b)]/80">{t('address')}</p>
           </div>
 
           <a
-            href={weddingConfig.googleMapsUrl}
+            href="https://maps.app.goo.gl/3i9RBFJP5AnnGM2c7?g_st=aw"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 px-6 py-2 rounded-full bg-[var(--accent,#b3365b)] text-white text-sm hover:opacity-90 transition-opacity"

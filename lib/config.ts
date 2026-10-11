@@ -9,10 +9,10 @@ export const weddingConfig = {
   coupleNames: process.env.NEXT_PUBLIC_COUPLE_NAMES || 'Moayed & Alaa',
 
   // ISO date-time string, e.g. "2026-12-12T18:00:00+04:00"
-  weddingDateTime: process.env.NEXT_PUBLIC_WEDDING_DATETIME || '2026-10-30T13:00:00+04:00',
+  weddingDateTime: process.env.NEXT_PUBLIC_WEDDING_DATETIME || '2026-10-30T13:30:00+02:00',
 
-  venueName: process.env.NEXT_PUBLIC_VENUE_NAME || 'The Grand Ballroom',
-  venueAddress: process.env.NEXT_PUBLIC_VENUE_ADDRESS || 'Abu Dhabi, United Arab Emirates',
+  venueName: process.env.NEXT_PUBLIC_VENUE_NAME || 'Abu Altayib Hall',
+  venueAddress: process.env.NEXT_PUBLIC_VENUE_ADDRESS || 'Om Durman, Sudan',
 
   // Full Google Maps share link to the venue
   googleMapsUrl:
@@ -29,7 +29,7 @@ export const weddingConfig = {
   // rather name your files differently, e.g. "/audio/a.mp3,/audio/b.mp3,...".
   musicTracks: (process.env.NEXT_PUBLIC_MUSIC_TRACKS
     ? process.env.NEXT_PUBLIC_MUSIC_TRACKS.split(',').map((s) => s.trim())
-    : Array.from({ length: 30 }, (_, i) => `/audio/${String(i + 1)}.mp3`)),
+    : Array.from({ length: 11 }, (_, i) => `/audio/${String(i + 1)}.mp3`)),
 
 };
 export const weddingCountdownPhrases = [
@@ -68,4 +68,4 @@ export const weddingCountdownPhrases = [
 // Number of days before the wedding that the countdown/background theme/song starts rotating
 export const THEME_WINDOW_DAYS = 30;
 
-export const DEBUG_DAY = new Date(); // for testing, pretend today is 30 days before the wedding
+export const DEBUG_DAY = new Date('2026-10-30T00:00:00'); // for testing, pretend today is 30 days before the wedding

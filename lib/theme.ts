@@ -36,7 +36,7 @@ export const THEMES = [
   { name: 'Silver Mist', from: '#f1f3f6', via: '#e0e4ea', to: '#c9d0da', accent: '#3d4757' },
   { name: 'Burgundy Velvet', from: '#3d1420', via: '#571d2d', to: '#742a3f', accent: '#f7d2da' },
   { name: 'Wisteria', from: '#e9e6fa', via: '#d6d1f3', to: '#bdb5e8', accent: '#48408a' },
-  { name: 'Starlit Gold', from: '#2a2412', via: '#3e351a', to: '#574a25', accent: '#f6e2a0' },
+  { name: 'Peony Pink', from: '#fde2ee', via: '#fbc6de', to: '#f6a3c7', accent: '#7a1f4f' },
 ];
 
 function daysUntil(dateStr: string): number {
@@ -76,10 +76,78 @@ export function getTodayTheme() {
 // Returns today's song — one of the 30 tracks in weddingConfig.musicTracks,
 // picked by the same day index as the background theme (index 0 = 30+ days out,
 // index 29 = wedding day). Falls back safely if fewer than 30 tracks are configured.
+// export function getTodaySong(): { src: string; dayNumber: number } {
+//   const { index } = getDayIndex();
+//   const tracks = weddingConfig.musicTracks;
+//   const trackIndex = tracks.length > 0 ? Math.min(tracks.length - 1, index) : 0;
+//   console.log('🎵 getTodaySong:', { trackIndex, dayNumber: index + 1, src: tracks[trackIndex] });
+//   return { src: tracks[trackIndex], dayNumber: index + 1 };
+// }
+
 export function getTodaySong(): { src: string; dayNumber: number } {
-  const { index } = getDayIndex();
   const tracks = weddingConfig.musicTracks;
-  const trackIndex = tracks.length > 0 ? Math.min(tracks.length - 1, index) : 0;
-  console.log('🎵 getTodaySong:', { trackIndex, dayNumber: index + 1, src: tracks[trackIndex] });
-  return { src: tracks[trackIndex], dayNumber: index + 1 };
+  const weddingDate = new Date(weddingConfig.weddingDateTime);
+
+  if (tracks.length === 0) {
+    return { src: '', dayNumber: 0 };
+  }
+
+  // Use local calendar dates to avoid timezone-related day differences.
+  const startDate = new Date('2026-10-11T00:00:00');
+  const today = DEBUG_DAY || new Date();
+
+  const start = new Date(
+    startDate.getFullYear(),
+    startDate.getMonth(),
+    startDate.getDate()
+  ).getTime();
+
+  const current = new Date(
+    today.getFullYear(),
+    today.getMonth(),
+    today.getDate()
+  ).getTime();
+
+  const wedding = new Date(
+    weddingDate.getFullYear(),
+    weddingDate.getMonth(),
+    weddingDate.getDate()
+  ).getTime();
+
+  const MS_PER_DAY = 24 * 60 * 60 * 1000;
+
+  const elapsedDays = Math.max(
+    0,
+    Math.floor((current - start) / MS_PER_DAY)
+  );
+
+  const daysRemaining = Math.max(
+    0,
+    Math.floor((wedding - current) / MS_PER_DAY)
+  );
+
+  // Always reserve the final track for the wedding day.
+  const trackIndex =
+    daysRemaining === 0
+      ? tracks.length - 1
+      : Math.min(
+          Math.floor(elapsedDays / 2),
+          tracks.length - 2
+        );
+
+  console.log('🎵 getTodaySong:', {
+    tracks: tracks.length,
+    startDate,
+    today,
+    weddingDate,
+    elapsedDays,
+    daysRemaining,
+    trackIndex,
+    src: tracks[trackIndex],
+  });
+
+  return {
+    src: tracks[trackIndex],
+    dayNumber: elapsedDays + 1,
+  };
 }
