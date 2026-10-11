@@ -119,7 +119,7 @@ export async function generateMetadata({
       locale: isArabic ? "ar_AE" : "en_US",
       images: [
         {
-          url: "/images/share.jpg",
+          url: "/images/share-updated.jpg",
           width: 1200,
           height: 630,
           alt,
@@ -132,7 +132,7 @@ export async function generateMetadata({
       card: "summary_large_image",
       title,
       description,
-      images: ["/images/share.jpg"],
+      images: ["/images/share-updated.jpg"],
     },
   };
 }
