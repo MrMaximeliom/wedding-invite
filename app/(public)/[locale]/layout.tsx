@@ -66,7 +66,31 @@ const tajawal = Tajawal({
 });
 export const metadata: Metadata = {
   title: `${weddingConfig.coupleNames} — Wedding Invitation`,
-  description: weddingConfig.inviteMessage,
+  description:
+    "Together with our families, we invite you to celebrate our wedding.",
+  openGraph: {
+    title: "We're Getting Married",
+    description:
+      "Together with our families, we invite you to celebrate our wedding.",
+    url: "https://wedding-invite-five-jade.vercel.app",
+    siteName: "Our Wedding Invitation",
+    type: "website",
+    images: [
+      {
+        url: "/share.png",
+        width: 1200,
+        height: 630,
+        alt: "Our wedding invitation",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "We're Getting Married",
+    description: "Together with our families.",
+    images: ["/share.png"],
+  },
+  
 };
 
 export function generateStaticParams() {
