@@ -68,4 +68,4 @@ export const weddingCountdownPhrases = [
 // Number of days before the wedding that the countdown/background theme/song starts rotating
 export const THEME_WINDOW_DAYS = 30;
 
-export const DEBUG_DAY = new Date('2026-10-30T00:00:00'); // for testing, pretend today is 30 days before the wedding
+export const DEBUG_DAY = new Date(); // for testing, pretend today is 30 days before the wedding
