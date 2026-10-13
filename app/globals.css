@@ -40,7 +40,7 @@ body {
 }
 
 /* Postage-stamp look: perforated (scalloped) edge using radial gradients */
-..stamp {
+.stamp {
   position: relative;
   background: transparent;
   box-shadow: none;
