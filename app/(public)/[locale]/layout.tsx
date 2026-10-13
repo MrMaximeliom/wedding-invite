@@ -22,8 +22,10 @@ const themeScript = `
     var THEMES = ${JSON.stringify(THEMES)};
     var WINDOW_DAYS = ${THEME_WINDOW_DAYS};
     var target = new Date(${JSON.stringify(weddingConfig.weddingDateTime)});
-    const now = new Date(${JSON.stringify(DEBUG_DAY)}) || new Date();
-    console.log('🎨 themeScript:', { now, target });
+    
+var debugDay = ${JSON.stringify(DEBUG_DAY || null)};
+var now = debugDay ? new Date(debugDay) : new Date();
+
     var diffMs = target.getTime() - now.getTime();
     var remaining = Math.ceil(diffMs / (1000 * 60 * 60 * 24));
     var clamped = Math.max(0, Math.min(WINDOW_DAYS, remaining));
