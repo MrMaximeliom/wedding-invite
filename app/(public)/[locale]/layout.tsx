@@ -33,7 +33,7 @@ var now = debugDay ? new Date(debugDay) : new Date();
     var dayIndex = Math.min(WINDOW_DAYS - 1, Math.floor(progress * WINDOW_DAYS));
     var themeIndex = Math.min(THEMES.length - 1, Math.floor((dayIndex / WINDOW_DAYS) * THEMES.length));
     var t = THEMES[themeIndex];
-    console.log('🎨 themeScript: dayIndex', dayIndex, 'themeIndex', themeIndex, 'theme', t);
+    console.log('🎨 themeScript: dayIndex', dayIndex, 'themeIndex', themeIndex, 'theme', t,'debug day', debugDay);
     var s = document.documentElement.style;
     s.setProperty('--from', t.from);
     s.setProperty('--via', t.via);
