@@ -9,11 +9,11 @@ export async function GET(req: NextRequest) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   }
 
-  const { data, error } = await supabaseAdmin
-    .from('lovely')
-    .select('*')
-    .order('created_at', { ascending: false });
-
+const { data, error } = await supabaseAdmin
+  .from('lovely')
+  .select('*')
+  .or('is_deleted.is.null,is_deleted.eq.false')
+  .order('created_at', { ascending: false });
   if (error) {
     return NextResponse.json({ error: error.message }, { status: 500 });
   }
