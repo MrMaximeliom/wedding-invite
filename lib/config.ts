@@ -12,7 +12,7 @@ export const weddingConfig = {
 
 // If you want it to be 1:30 PM local time in your target timezone, 
 // make sure your fallback matches what you want the clock to show:
-weddingDateTime: process.env.NEXT_PUBLIC_WEDDING_DATETIME || '2026-10-30T13:30:00',
+weddingDateTime: process.env.NEXT_PUBLIC_WEDDING_DATETIME || '2026-10-30T13:30:00+04:00',
 
 
   venueName: process.env.NEXT_PUBLIC_VENUE_NAME || 'Abu Altayib Hall',
@@ -72,4 +72,6 @@ export const weddingCountdownPhrases = [
 // Number of days before the wedding that the countdown/background theme/song starts rotating
 export const THEME_WINDOW_DAYS = 30;
 
-export const DEBUG_DAY = new Date(); // for testing, pretend today is 30 days before the wedding
+export const DEBUG_DAY: Date | null = process.env.NEXT_PUBLIC_DEBUG_DAY
+  ? new Date(process.env.NEXT_PUBLIC_DEBUG_DAY)
+  : null;
