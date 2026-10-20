@@ -12,8 +12,9 @@ export const weddingConfig = {
 
 // If you want it to be 1:30 PM local time in your target timezone, 
 // make sure your fallback matches what you want the clock to show:
-weddingDateTime: process.env.NEXT_PUBLIC_WEDDING_DATETIME || '2026-10-30T13:30:00+04:00',
-
+weddingDateTime:
+  process.env.NEXT_PUBLIC_WEDDING_DATETIME ||
+  '2026-10-30T13:30:00+02:00',
 
   venueName: process.env.NEXT_PUBLIC_VENUE_NAME || 'Abu Altayib Hall',
   venueAddress: process.env.NEXT_PUBLIC_VENUE_ADDRESS || 'Om Durman, Sudan',
