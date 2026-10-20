@@ -8,17 +8,26 @@ export default async function DetailsPage() {
   const locale = await getLocale();
   const dateLocale = locale === 'ar' ? 'ar' : 'en';
 
-  const date = new Date(weddingConfig.weddingDateTime);
-  const dateLabel = date.toLocaleDateString(dateLocale, {
-    weekday: 'long',
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
-  });
-  const timeLabel = date.toLocaleTimeString(dateLocale, {
-    hour: '2-digit',
-    minute: '2-digit',
-  });
+  
+const locale = await getLocale();
+const dateLocale = locale === 'ar' ? 'ar' : 'en';
+
+const date = new Date(weddingConfig.weddingDateTime);
+
+const dateLabel = date.toLocaleDateString(dateLocale, {
+  weekday: 'long',
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+  timeZone: 'Africa/Khartoum',
+});
+
+const timeLabel = date.toLocaleTimeString(dateLocale, {
+  hour: '2-digit',
+  minute: '2-digit',
+  timeZone: 'Africa/Khartoum',
+});
+
 
   return (
     <AnimatedBackground>
