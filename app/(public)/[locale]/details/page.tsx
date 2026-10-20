@@ -5,8 +5,7 @@ import { weddingConfig } from '@/lib/config';
 
 export default async function DetailsPage() {
   const t = await getTranslations('Details');
-  const locale = await getLocale();
-  const dateLocale = locale === 'ar' ? 'ar' : 'en';
+
 
   
 const locale = await getLocale();
