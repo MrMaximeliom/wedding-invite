@@ -92,32 +92,31 @@ export function getTodaySong(): { src: string; dayNumber: number } {
 
   // Use local calendar dates to avoid timezone-related day differences.
   const startDate = new Date('2026-10-11T00:00:00');
-  const today = DEBUG_DAY || new Date();
 
-  const start = new Date(
-    startDate.getFullYear(),
-    startDate.getMonth(),
-    startDate.getDate()
-  ).getTime();
+const MS_PER_DAY = 24 * 60 * 60 * 1000;
 
-  const current = new Date(
-    today.getFullYear(),
-    today.getMonth(),
-    today.getDate()
-  ).getTime();
+// Calendar dates in the user's local timezone
+const start = new Date(2026, 9, 11).getTime();
 
-  const wedding = new Date(
-    weddingDate.getFullYear(),
-    weddingDate.getMonth(),
-    weddingDate.getDate()
-  ).getTime();
+const today = DEBUG_DAY || new Date();
 
-  const MS_PER_DAY = 24 * 60 * 60 * 1000;
+const current = new Date(
+  today.getFullYear(),
+  today.getMonth(),
+  today.getDate()
+).getTime();
 
-  const elapsedDays = Math.max(
-    0,
-    Math.floor((current - start) / MS_PER_DAY)
-  );
+const wedding = new Date(
+  weddingDate.getFullYear(),
+  weddingDate.getMonth(),
+  weddingDate.getDate()
+).getTime();
+
+const elapsedDays = Math.max(
+  0,
+  Math.floor((current - start) / MS_PER_DAY)
+);
+  
 
   const daysRemaining = Math.max(
     0,
