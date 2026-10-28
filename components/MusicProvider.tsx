@@ -2,7 +2,7 @@
 
 import { createContext, useContext, useEffect, useRef, useState } from 'react';
 import { useTranslations } from 'next-intl';
-import { usePathname } from '@/i18n/navigation'; // locale-stripped pathname: "/en/invite" -> "/invite"
+import { usePathname } from '@/i18n/navigation';
 import { getTodaySong } from '@/lib/theme';
 
 type MusicContextValue = { playing: boolean; toggle: () => void };
@@ -14,20 +14,25 @@ export function useMusic() {
   return ctx;
 }
 
-// Lives in the root layout (never unmounts on navigation) so the song keeps
-// playing as the visitor moves between /invite -> /details -> /wishes.
-// It starts once, the first time they leave the "/" stamp landing page.
 export default function MusicProvider({ children }: { children: React.ReactNode }) {
   const t = useTranslations('Music');
   const pathname = usePathname();
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const startedRef = useRef(false);
-  const [song] = useState(() => getTodaySong());
+
+  // null on the server and during hydration, so no stale src is baked into the HTML.
+  const [song, setSong] = useState<{ src: string; dayNumber: number } | null>(null);
   const [playing, setPlaying] = useState(false);
   const [blocked, setBlocked] = useState(false);
 
+  // Pick the song on the client only, using the real current date.
   useEffect(() => {
-    if (startedRef.current || pathname === '/') return; // stay silent on the stamp page
+    setSong(getTodaySong());
+  }, []);
+
+  // Start playback the first time the visitor leaves the "/" landing page.
+  useEffect(() => {
+    if (!song?.src || startedRef.current || pathname === '/') return;
     startedRef.current = true;
     const audio = audioRef.current;
     if (!audio) return;
@@ -42,11 +47,11 @@ export default function MusicProvider({ children }: { children: React.ReactNode 
         setPlaying(false);
         setBlocked(true);
       });
-  }, [pathname]);
+  }, [pathname, song]);
 
   const toggle = () => {
     const audio = audioRef.current;
-    if (!audio) return;
+    if (!audio || !song?.src) return;
     if (playing) {
       audio.pause();
       setPlaying(false);
@@ -65,7 +70,7 @@ export default function MusicProvider({ children }: { children: React.ReactNode 
 
   return (
     <MusicContext.Provider value={{ playing, toggle }}>
-      <audio ref={audioRef} src={song.src} loop preload="auto" />
+      <audio ref={audioRef} src={song?.src || undefined} loop preload="auto" />
       {children}
       {showButton && (
         <div className="fixed top-4 right-4 z-50 flex flex-col items-center gap-1">
